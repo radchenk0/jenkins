@@ -1,0 +1,20 @@
+{
+  "name": "jenkins",
+  "version": "1.0.0",
+  "description": "Local Jenkins Server",
+  "scripts": {
+    "start": "npm run docker:down && npm run docker:build && npm run docker:up",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:build": "docker-compose build --no-cache",
+    "docker:bash": "env-cmd cross-env-shell \"docker exec -it $CONTAINER_NAME bash\"",
+    "docker:logs": "env-cmd cross-env-shell \"docker logs $CONTAINER_NAME\"",
+    "docker:config": "docker-compose config"
+  },
+  "author": "Mikhail Radchenko",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "env-cmd": "^10.1.0"
+  }
+}

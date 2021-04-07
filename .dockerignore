@@ -1,0 +1,8 @@
+package*.json
+Dockerfile
+README.md
+
+.dockerignore
+.git
+.gitignore
+.env

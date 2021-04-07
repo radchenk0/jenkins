@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  jenkins:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ${IMAGE_NAME}
+    container_name: ${CONTAINER_NAME}
+    env_file: .env
+    ports:
+      - "${HOST_PORT}:${HOST_PORT}"
+      - "${AGENT_PORT}:${AGENT_PORT}"
+    volumes:
+      - jenkins-volume:/var/jenkins_home
+    networks:
+      - jenkins-newtwork
+    restart: always
+
+volumes:
+  jenkins-volume:
+
+networks:
+  jenkins-newtwork:
+    driver: bridge
